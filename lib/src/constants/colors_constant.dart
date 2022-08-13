@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ColorsConstant {
   static const Color blue = Color.fromRGBO(46, 140, 255, 1);
