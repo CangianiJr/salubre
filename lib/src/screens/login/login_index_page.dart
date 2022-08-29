@@ -38,13 +38,6 @@ class LoginIndexPage extends StatelessWidget {
                         ),
                       ),
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(55),
-                          primary: ColorsConstant.strongBlue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
                         onPressed: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -79,9 +72,6 @@ class LoginIndexPage extends StatelessWidget {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(55),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
                           primary: ColorsConstant.blue,
                         ),
                         onPressed: () {

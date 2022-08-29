@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:salubre/src/constants/colors_constant.dart';
+import 'package:salubre/src/controllers/login_controller.dart';
+import 'package:salubre/src/screens/login/login_index_page.dart';
 
 class LayoutComponent extends StatefulWidget {
   const LayoutComponent({
@@ -21,14 +21,20 @@ class LayoutComponent extends StatefulWidget {
 }
 
 class _LayoutComponentState extends State<LayoutComponent> {
+  // ignore: unused_element
+  _logoff() {
+    LoginController().logoff();
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginIndexPage()),
+        (route) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: widget.title != null ? Text(widget.title!) : null,
-        titleTextStyle: GoogleFonts.montserrat(),
-        centerTitle: true,
-        backgroundColor: ColorsConstant.strongBlue,
         leading: IconButton(
           icon: SvgPicture.asset("assets/images/ícone-seta-voltar-branca.svg"),
           onPressed: () {
@@ -50,7 +56,9 @@ class _LayoutComponentState extends State<LayoutComponent> {
               ]
             : null,
       ),
-      body: widget.body,
+      body: SafeArea(
+        child: widget.body,
+      ),
       floatingActionButton: widget.showFloatingActionButton
           ? FloatingActionButton(
               child: SvgPicture.asset("assets/images/menu.svg"),

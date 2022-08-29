@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:salubre/src/constants/colors_constant.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:salubre/src/screens/login/login_logar_page.dart';
-import 'package:salubre/src/screens/shared/layout_component.dart';
+
+import '../components/layout_component.dart';
 
 class UsuarioCadastroPage extends StatefulWidget {
   const UsuarioCadastroPage({Key? key}) : super(key: key);
@@ -13,14 +14,14 @@ class UsuarioCadastroPage extends StatefulWidget {
 class _UsuarioCadastroPageState extends State<UsuarioCadastroPage> {
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formCadastro = GlobalKey<FormState>();
+    final GlobalKey<FormState> formCadastro = GlobalKey<FormState>();
     TextEditingController campoUsuario = TextEditingController();
     TextEditingController campoEmail = TextEditingController();
     TextEditingController campoSenha = TextEditingController();
     TextEditingController campoRepetirSenha = TextEditingController();
 
     _enviar() {
-      if (_formCadastro.currentState!.validate()) {
+      if (formCadastro.currentState!.validate()) {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return const LoginLogarPage();
         }));
@@ -45,22 +46,12 @@ class _UsuarioCadastroPageState extends State<UsuarioCadastroPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Form(
-                  key: _formCadastro,
+                  key: formCadastro,
                   child: Column(
                     children: [
                       TextFormField(
                         controller: campoUsuario,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: ColorsConstant.blue),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: ColorsConstant.blue),
-                          ),
                           labelText: "Usuario",
                         ),
                         validator: (value) {
@@ -75,16 +66,6 @@ class _UsuarioCadastroPageState extends State<UsuarioCadastroPage> {
                       TextFormField(
                         controller: campoEmail,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: ColorsConstant.blue),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: ColorsConstant.blue),
-                          ),
                           labelText: "Insira seu email",
                         ),
                         validator: (value) {
@@ -101,16 +82,6 @@ class _UsuarioCadastroPageState extends State<UsuarioCadastroPage> {
                         controller: campoSenha,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: ColorsConstant.blue),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: ColorsConstant.blue),
-                          ),
                           labelText: "Senha",
                         ),
                         validator: (value) {
@@ -126,16 +97,6 @@ class _UsuarioCadastroPageState extends State<UsuarioCadastroPage> {
                         controller: campoRepetirSenha,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: ColorsConstant.blue),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: ColorsConstant.blue),
-                          ),
                           labelText: "Repita sua senha",
                         ),
                         validator: (value) {
@@ -150,19 +111,12 @@ class _UsuarioCadastroPageState extends State<UsuarioCadastroPage> {
                   ),
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(60),
-                    primary: ColorsConstant.strongBlue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
                   onPressed: () {
                     _enviar();
                   },
-                  child: const Text(
+                  child: Text(
                     "Enviar",
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
